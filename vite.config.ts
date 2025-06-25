@@ -2,6 +2,10 @@ import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+import mdx from "@mdx-js/rollup";
+import remarkFrontMatter from "remark-frontmatter";
+import remarkMdxFrontMatter from "remark-mdx-frontmatter";
+
 declare module "@remix-run/node" {
   interface Future {
     v3_singleFetch: true;
@@ -10,6 +14,10 @@ declare module "@remix-run/node" {
 
 export default defineConfig({
   plugins: [
+    mdx({
+      remarkPlugins: [remarkFrontMatter, remarkMdxFrontMatter],
+    }),
+
     remix({
       ssr: false,
       future: {
