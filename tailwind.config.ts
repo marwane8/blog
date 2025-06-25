@@ -15,8 +15,10 @@ export default {
           "Segoe UI Symbol",
           "Noto Color Emoji",
         ],
+        cal: ["Caladea"],
       },
     },
   },
-  plugins: [],
+
+  plugins: [require("@tailwindcss/typography")],
 } satisfies Config;

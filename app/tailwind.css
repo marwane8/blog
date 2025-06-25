@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,4 +10,8 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+.dbug {
+  @apply box-border border-2 border-red-500;
 }
