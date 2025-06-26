@@ -26,6 +26,7 @@ export default {
           h1: {
             margin: "0",
             textAlign: "center",
+            fontSize: theme("fontSize.4xl")[0],
             fontFamily: theme("fontFamily.lexend").join(", "),
             color: theme("colors.teal.500"),
             fontWeight: "800",
@@ -67,10 +68,10 @@ export default {
             marginTop: ".75rem",
             marginBottom: ".75rem",
             fontFamily: theme("fontFamily.cal").join(", "),
-            fontSize: theme("fontSize.lg")[0],
+            fontSize: theme("fontSize.xl")[0],
             letterSpacing: "0.5px",
             [`@media (min-width: ${theme("screens.md")})`]: {
-              fontSize: theme("fontSize.xl")[0],
+              fontSize: theme("fontSize.2xl")[0],
             },
           },
           a: {

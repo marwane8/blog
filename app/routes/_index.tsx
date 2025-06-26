@@ -1,4 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
+import Post from "~/components/post";
+import { getPosts } from "~/js.util";
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,24 +10,16 @@ export const meta: MetaFunction = () => {
 };
 
 export default function App() {
+  const posts = getPosts();
+  const featured = posts.filter((post) => post.meta?.featured);
+
   return (
     <div>
-      <div></div>
-      <h1 className="text-center my-7 text-5xl font-semibold text-teal-500 font-lexend">
-        {" "}
-        Salam from Marwane
-      </h1>
-      <p className="font-cal text-2xl tracking-wide">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-        ever since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-      </p>
+      <div className="py-7 space-y-9">
+        {featured.map((post) => (
+          <Post key={post.id} slug={post.id} meta={post.meta} />
+        ))}
+      </div>
     </div>
   );
 }

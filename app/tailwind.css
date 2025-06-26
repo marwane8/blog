@@ -14,3 +14,11 @@
 .transition {
   @apply transition-all duration-200 ease-in-out;
 }
+
+.title {
+  @apply font-lexend text-4xl font-extrabold text-teal-500;
+}
+
+.subject {
+  @apply font-cal text-xl md:text-2xl tracking-wide;
+}
