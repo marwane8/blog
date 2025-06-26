@@ -1,28 +1,21 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
-
-export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
+import { DarkModeContext } from "./components/dark-mode";
+import { useState } from "react";
+import { cn } from "./js.util";
+import Navbar from "./components/navbar";
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const [darkMode, setDarkMode] = useState(true);
   return (
     <html lang="en">
       <head>
@@ -31,19 +24,64 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
+
+      <DarkModeContext.Provider
+        value={{ darkMode: darkMode, setDarkMode: setDarkMode }}
+      >
+        <body className={cn(darkMode ? "dark" : "")}>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </DarkModeContext.Provider>
     </html>
   );
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <div className="min-h-[100dvh] base transition flex flex-col">
+      <div className="container mx-auto px-3 max-w-screen-xl">
+        <Navbar />
+        <Outlet />
+      </div>
+    </div>
+  );
 }
 
 export function HydrateFallback() {
   return <p>Loading...</p>;
+}
+
+export function ErrorBoundary() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const error: any = useRouteError();
+  return (
+    <div className="min-h-[100dvh] base transition flex flex-col font-lexend">
+      <div className="flex h-fit flex-col rounded-2xl  p-12  ">
+        <h1 className="pb-4 text-center text-2xl font-semibold">
+          <div className="text-8xl font-bold text-secondary text-teal-500">
+            {error.status}{" "}
+          </div>{" "}
+          <div className="text-4xl font-semibold">{error.statusText}</div>
+        </h1>
+        <h1 className=" text-center text-xl font-semibold">
+          {error.status == 404
+            ? "This page is floating in deep space."
+            : "Sorry, something went wrong"}
+        </h1>
+
+        <h2 className="text-center">
+          Return{" "}
+          <Link
+            to={"/"}
+            className="m-auto my-5 underline underline-offset-2 hover:text-teal-500 cursor-pointer"
+          >
+            home
+          </Link>{" "}
+          and try again.{" "}
+        </h2>
+      </div>
+    </div>
+  );
 }

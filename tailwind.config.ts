@@ -17,9 +17,11 @@ export default {
           "Noto Color Emoji",
         ],
         cal: ["Caladea"],
+        lexend: ["Lexend Deca"],
       },
     },
   },
 
+  darkMode: "class",
   plugins: [typography],
 } satisfies Config;

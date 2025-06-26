@@ -9,12 +9,9 @@ export const meta: MetaFunction = () => {
 
 export default function App() {
   return (
-    <div className="mx-7">
-      <ul className="flex gap-5 p-3">
-        <li>Home </li>
-        <li>About </li>
-      </ul>
-      <h1 className="text-center my-7 text-3xl font-bold">
+    <div>
+      <div></div>
+      <h1 className="text-center my-7 text-5xl font-semibold text-teal-500 font-lexend">
         {" "}
         Salam from Marwane
       </h1>

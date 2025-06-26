@@ -1,17 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Lexend+Deca:wght@100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+.base {
+  @apply bg-amber-50 text-stone-800  dark:bg-neutral-800 dark:text-stone-100;
 }
 
 .dbug {
   @apply box-border border-2 border-red-500;
+}
+.transition {
+  @apply transition-all duration-200 ease-in-out;
 }
