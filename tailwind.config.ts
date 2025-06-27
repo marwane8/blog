@@ -19,6 +19,9 @@ export default {
         cal: ["Caladea"],
         lexend: ["Lexend Deca"],
       },
+      colors: {
+        "off-white": "#FEFDFD",
+      },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       typography: (theme: any) => {
         const reset = {

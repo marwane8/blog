@@ -58,7 +58,7 @@ export function ErrorBoundary() {
   const error: any = useRouteError();
   return (
     <div className="min-h-[100dvh] base transition flex flex-col font-lexend">
-      <div className="flex h-fit flex-col rounded-2xl  p-12  ">
+      <div className="flex h-fit flex-col rounded-2xl  p-12 translate-y-16">
         <h1 className="pb-4 text-center text-2xl font-semibold">
           <div className="text-8xl font-bold text-secondary text-teal-500">
             {error.status}{" "}
@@ -67,16 +67,13 @@ export function ErrorBoundary() {
         </h1>
         <h1 className=" text-center text-xl font-semibold">
           {error.status == 404
-            ? "This page is floating in deep space."
+            ? "The page you are looking for is floating in deep space."
             : "Sorry, something went wrong"}
         </h1>
 
         <h2 className="text-center">
           Return{" "}
-          <Link
-            to={"/"}
-            className="m-auto my-5 underline underline-offset-2 hover:text-teal-500 cursor-pointer"
-          >
+          <Link to={"/"} className="link">
             home
           </Link>{" "}
           and try again.{" "}

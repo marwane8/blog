@@ -16,9 +16,7 @@ export default function Post({
       >
         {meta.title}
       </Link>
-      <p className="font-cal text-xl md:text-2xl tracking-wide py-1">
-        {meta.summary}
-      </p>
+      <p className="words">{meta.summary}</p>
     </div>
   );
 }
