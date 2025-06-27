@@ -2,8 +2,8 @@ import { Link } from "@remix-run/react";
 import pfp from "app/assets/pfp.jpg";
 
 export default function About() {
-  const githubLink = "/";
-  const linkedinLink = "/";
+  const githubLink = "https://github.com/marwane8";
+  const linkedinLink = "https://www.linkedin.com/in/marwanetaroua";
   return (
     <div>
       <div className="py-14">
@@ -30,11 +30,11 @@ export default function About() {
         </p>
         <p>
           You can find out more about my work expierience on my{" "}
-          <Link className="link" to={githubLink}>
+          <Link className="link" to={linkedinLink}>
             linkedin
           </Link>{" "}
           page, and check out some of my side projects on{" "}
-          <Link className="link" to={linkedinLink}>
+          <Link className="link" to={githubLink}>
             {" "}
             github
           </Link>
