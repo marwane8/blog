@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import DailyProverb from "~/components/daily-proverb";
 import Post from "~/components/post";
 import { getPosts } from "~/js.util";
 
@@ -15,6 +16,7 @@ export default function App() {
 
   return (
     <div>
+      <DailyProverb />
       <div className="py-7 space-y-9">
         {featured.map((post) => (
           <Post key={post.id} slug={post.id} meta={post.meta} />

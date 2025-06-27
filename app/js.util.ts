@@ -25,3 +25,43 @@ export function getPosts() {
   });
   return posts;
 }
+
+export function formatDate(date: string | Date, weekday = false) {
+  if (!date) {
+    return "";
+  }
+  const currDay = new Date(date);
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const dayName = days[currDay.getDay()];
+  const monthName = months[currDay.getMonth()];
+  const day = currDay.getDate() + 1;
+  const year = currDay.getFullYear();
+
+  return weekday
+    ? `${dayName} ${monthName} ${day}, ${year}`
+    : `${monthName} ${day}, ${year}`;
+}
