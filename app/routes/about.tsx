@@ -19,7 +19,7 @@ export default function About() {
       </div>
       <div className="words space-y-5">
         <p>
-          <span className="font-lexend font-bold text-3xl md:text-4xl ">
+          <span className="font-lexend font-bold text-2xl md:text-4xl ">
             I&apos;m Marwane Taroua,{" "}
           </span>{" "}
           a software engineer based out of New York City. I started my software

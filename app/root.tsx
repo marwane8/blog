@@ -50,7 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <DarkModeContext.Provider
         value={{ darkMode: darkMode, setDarkMode: setDarkMode }}
       >
-        <body className={cn(darkMode ? "dark" : "")}>
+        <body className={cn(darkMode ? "dark bg-neutral-800" : "bg-off-white")}>
           {children}
           <ScrollRestoration />
           <Scripts />
