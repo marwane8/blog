@@ -14,7 +14,7 @@ export default function About() {
   const linkedinLink = "https://www.linkedin.com/in/marwanetaroua";
   return (
     <div>
-      <div className="py-14">
+      <div className="my-14">
         <ProfilePic />
       </div>
       <div className="words space-y-5">
