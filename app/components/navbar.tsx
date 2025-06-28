@@ -6,7 +6,7 @@ export default function Navbar() {
     <div className="flex  py-3  justify-between">
       <ul className="flex items-center gap-3 font-lexend">
         <Link
-          className="font-bold tracking-wide font-lexend text-3xl cursor-pointer hover:text-teal-400 transition"
+          className="font-bold tracking-wide font-lexend text-2xl md:text-3xl cursor-pointer hover:text-teal-400 transition"
           to={"/"}
         >
           marwane.dev
