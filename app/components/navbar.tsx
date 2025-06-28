@@ -11,12 +11,12 @@ export default function Navbar() {
         >
           marwane.dev
         </Link>
-        <li className="size-6">
+        <li className="size-5 md:size-6">
           <DarkToggle />
         </li>
       </ul>
 
-      <ul className="flex items-center gap-3 font-lexend text-xl">
+      <ul className="flex items-center gap-3 font-lexend text-lg md:text-xl">
         <Link
           className="hover:underline underline-offset-2 text-stone-600 dark:text-stone-200 hover:dark:text-white hover:text-black"
           to={"/about"}
