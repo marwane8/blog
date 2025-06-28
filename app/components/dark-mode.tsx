@@ -18,7 +18,7 @@ export default function DarkToggle() {
         </svg>
       ) : (
         // Moon icon
-        <svg viewBox="0 0 24 24">
+        <svg fill="none" viewBox="0 0 24 24">
           <path
             className="size-full fill-current hover:fill-indigo-500 transition-colors duration-200"
             fill="currentColor"

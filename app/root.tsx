@@ -50,7 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <DarkModeContext.Provider
         value={{ darkMode: darkMode, setDarkMode: setDarkMode }}
       >
-        <body className={cn(darkMode ? "dark base" : "")}>
+        <body className={cn(darkMode ? "dark" : "")}>
           {children}
           <ScrollRestoration />
           <Scripts />
@@ -63,9 +63,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <div className="min-h-[100dvh] base transition flex flex-col">
-      <div className="container mx-auto px-3 max-w-screen-xl pb-20">
+      <div className="container mx-auto px-3 max-w-screen-xl">
         <Navbar />
         <Outlet />
+        <div className="h-24" />
       </div>
     </div>
   );
