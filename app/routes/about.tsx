@@ -1,5 +1,13 @@
+import { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import pfp from "app/assets/pfp.jpg";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "About | Marwane" },
+    { name: "description", content: "Marwane's Dev Blog" },
+  ];
+};
 
 export default function About() {
   const githubLink = "https://github.com/marwane8";

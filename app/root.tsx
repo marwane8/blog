@@ -13,6 +13,14 @@ import { DarkModeContext } from "./components/dark-mode";
 import { useState } from "react";
 import { cn } from "./js.util";
 import Navbar from "./components/navbar";
+import { MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Marwane" },
+    { name: "description", content: "Marwane's Dev Blog" },
+  ];
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(true);
@@ -21,6 +29,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-96x96.png"
+          sizes="96x96"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
         <Meta />
         <Links />
       </head>
