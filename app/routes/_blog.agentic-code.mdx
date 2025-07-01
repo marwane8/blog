@@ -1,0 +1,71 @@
+---
+title: The Agentic Codebase
+date: July 1st, 2025
+featured: true
+summary: "Making a code base agentic is actually worth it! And it can be done with 4 things. A clean code base, Agent Tooling, Resources, Prompt Templates. Resources and llm documentation."
+tags: ["ai"]
+---
+
+# {frontmatter.title}
+
+<figcaption> {frontmatter.date}</figcaption>
+
+[#{frontmatter.tags[0]}]()
+
+Making a code base agentic is actually worth it! And it can be done with 4 things. A clean code base, Agent Tooling, Resources, and Prompt Templates. Resources and llm documentation.
+
+## Powers of an agentic code base
+
+- AI can answer questions and ramp up a new hire on code
+- Ai can write test coverage and implement small features for you
+- Ai can run the code and handle simple tasks with out your involvement
+- As llms get stronger you code base gets stronger
+
+### Agents as a graph
+
+Think of agents as a very sophisticated desicion tree that will take context and try to make the next best action. This means that adding context gives you high quality descions. Adding tools gives you better set of choices. Adding prompts clearifies the question. With this understand we can position any code base to be easily accelerated by AI.
+
+### The Agents bedrock
+There are 3 important components of an agentic code base; Tooling, Resources, and Prompt templates.
+These should work in harmony with the goal of building the most effective context for a given problem.
+
+#### Tooling
+These are the core deterministic function that are available to the agent to use. They are primarily functions to commit an action or a way to get access and summarize resources.
+
+#### Resources
+Resources can be any information needed for the ai to make high quality decisions. In the world of AI it’s not the agent but the data that really sets apart the user experience.
+
+#### Prompt Templates
+Prompt templates are a powerful way to orient an agent towards specific behaviors. This goes along way to prevent hallucinations especially for the mostly common decision paths. You will want to setup templates to handle them.
+
+## Setting up your code base
+The good news is that setting up your code base is the same as it’s always been. Automated Pipelines and documents can now be the “tools” and “resources” an agent can use.
+
+The most fundamental pieces your code base needs are:
+- A read me explaining purpose, tech stack, project structure
+- Isolated and quality commit messages
+- Automated testing tool and test suite
+- Automated static linter
+- CICD pipeline for deployment
+
+With these in place agents can go along way in automating small incremental changes
+
+## Agent Integration
+
+With the main pieces in place your code base is now ready for some serious AI integrations. When using an agent the final thing to consider is your agent automation slider and human feedback loop.
+
+### Agent Automation
+
+Agent automation is what level of change do you want ai to make. The best apps provide a stair step approach to how invasive an AI can get.
+
+### Human Feedback loop
+
+AIs hallucinate… So be there to stop them from blowing up your code! After an AI automated change provide a simple check mark for an AI to either restart or keep going.
+
+## The End
+
+With that in place you are well on your way into the AI journey thanks for reading to the end! This overview was created by drawing inspiration from many great sources.
+- [Karpathy Talk](https://youtu.be/LCEmiRjPEtQ?si=qDF3NboJMwVl5kb9)
+- [Deep Learning MCP Course](https://learn.deeplearning.ai/courses/mcp-build-rich-context-ai-apps-with-anthropic/lesson/xtt6w/mcp-architecture)
+- [AI Assisted Codebases](https://blog.nilenso.com/blog/2025/05/29/ai-assisted-coding/)
+- [12-Factor Agents](https://news.ycombinator.com/item?id=43699271)
