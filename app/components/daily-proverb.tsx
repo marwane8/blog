@@ -33,4 +33,5 @@ const PROVERBS = [
   "Wealth comes like a turtle, and runs away like a gazelle.",
   "Planning is half of living.",
   "Flaseness lasts an hour, the truth lasts until the end of time.",
+  "Every dog has its day.",
 ];

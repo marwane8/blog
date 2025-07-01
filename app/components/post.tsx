@@ -9,7 +9,7 @@ export default function Post({
   meta: Frontmatter;
 }) {
   return (
-    <div className="max-w-xl m-auto space-y-1">
+    <div className="max-w-xl m-auto space-y-3">
       <Link
         className="title hover:underline underline-offset-4  decoration-dotted"
         to={slug}

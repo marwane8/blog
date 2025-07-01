@@ -39,10 +39,6 @@ export default {
             marginBottom: "1rem",
             fontFamily: theme("fontFamily.lexend").join(", "),
             fontSize: theme("fontSize.3xl")[0],
-            [`@media (min-width: ${theme("screens.md")})`]: {
-              fontSize: theme("fontSize.4xl")[0],
-            },
-
             color: "inherit",
           },
 
@@ -52,9 +48,6 @@ export default {
             fontFamily: theme("fontFamily.lexend").join(", "),
             color: "inherit",
             fontSize: theme("fontSize.2xl")[0],
-            [`@media (min-width: ${theme("screens.md")})`]: {
-              fontSize: theme("fontSize.3xl")[0],
-            },
           },
           h4: {
             marginTop: ".75rem",
@@ -62,20 +55,14 @@ export default {
             fontFamily: theme("fontFamily.lexend").join(", "),
             color: "inherit",
             fontSize: theme("fontSize.lg")[0],
-            [`@media (min-width: ${theme("screens.md")})`]: {
-              fontSize: theme("fontSize.xl")[0],
-            },
           },
 
           p: {
             marginTop: ".75rem",
             marginBottom: ".75rem",
             fontFamily: theme("fontFamily.cal").join(", "),
-            fontSize: theme("fontSize.xl")[0],
+            fontSize: theme("fontSize.lg")[0],
             letterSpacing: "0.5px",
-            [`@media (min-width: ${theme("screens.md")})`]: {
-              fontSize: theme("fontSize.2xl")[0],
-            },
           },
           a: {
             margin: "0",
@@ -139,6 +126,13 @@ export default {
           pre: {
             backgroundColor: theme("colors.teal.900"),
           },
+
+          blockquote: {
+            borderColor: theme("colors.amber.500"),
+            color: "inherit",
+            paddingLeft: "10px",
+          },
+
           figcaption: {
             margin: "3px",
             textAlign: "center",

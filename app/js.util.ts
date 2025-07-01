@@ -58,7 +58,7 @@ export function formatDate(date: string | Date, weekday = false) {
 
   const dayName = days[currDay.getDay()];
   const monthName = months[currDay.getMonth()];
-  const day = currDay.getDate() + 1;
+  const day = currDay.getDate();
   const year = currDay.getFullYear();
 
   return weekday
