@@ -35,31 +35,30 @@ export default {
             fontWeight: "800",
           },
           h2: {
-            marginTop: "1rem",
-            marginBottom: "1rem",
+            marginTop: "22.5px",
+            marginBottom: "22.5px",
             fontFamily: theme("fontFamily.lexend").join(", "),
             fontSize: theme("fontSize.3xl")[0],
             color: "inherit",
           },
 
           h3: {
-            marginTop: ".75rem",
-            marginBottom: ".75rem",
+            marginTop: "22.5px",
+            marginBottom: "22.5px",
             fontFamily: theme("fontFamily.lexend").join(", "),
             color: "inherit",
             fontSize: theme("fontSize.2xl")[0],
           },
           h4: {
-            marginTop: ".75rem",
-            marginBottom: ".75rem",
+            marginTop: "22.5px",
+            marginBottom: "22.5px",
             fontFamily: theme("fontFamily.lexend").join(", "),
             color: "inherit",
             fontSize: theme("fontSize.lg")[0],
           },
 
           p: {
-            marginTop: ".75rem",
-            marginBottom: ".75rem",
+            marginBottom: "22.5px",
             fontFamily: theme("fontFamily.cal").join(", "),
             fontSize: theme("fontSize.lg")[0],
             letterSpacing: "0.5px",
@@ -76,8 +75,12 @@ export default {
               color: theme("colors.teal.500"),
             },
           },
+          strong: {
+            color: "inherit",
+          },
           li: {
             margin: "0",
+            fontSize: "18px"
           },
 
           code: {
@@ -99,7 +102,6 @@ export default {
             marginTop: ".75rem",
             marginBottom: ".75rem",
             fontFamily: theme("fontFamily.cal").join(", "),
-            fontSize: theme("fontSize.lg")[0],
             letterSpacing: "0.5px",
             [`@media (min-width: ${theme("screens.md")})`]: {
               fontSize: theme("fontSize.xl")[0],

@@ -42,18 +42,18 @@ export function formatDate(date: string | Date, weekday = false) {
   ];
 
   const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
+    "January",
+    "February",
+    "March",
+    "April",
     "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const dayName = days[currDay.getDay()];
@@ -65,3 +65,10 @@ export function formatDate(date: string | Date, weekday = false) {
     ? `${dayName} ${monthName} ${day}, ${year}`
     : `${monthName} ${day}, ${year}`;
 }
+
+function parseDate(str: string): Date {
+  return new Date(str.replace(/(\d+)(st|nd|rd|th)/, "$1"));
+}
+
+export const sortDates = (a: string, b: string) =>
+  parseDate(a).getTime() - parseDate(b).getTime();
