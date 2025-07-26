@@ -1,0 +1,114 @@
+---
+title: Optimizing Slow Spark Jobs
+date: July 17th, 2025
+featured: true
+summary: "So - you’ve just inherited a slow spark data pipeline. At some point it becomes a huge bottleneck that drains tons of developer and processing time. This blog post will go over a tried and true method that I have used to bring spark jobs that used to take hours down to several minutes."
+tags: ["data", "spark"]
+---
+
+# {frontmatter.title}
+
+<figcaption> {frontmatter.date}</figcaption>
+
+[#{frontmatter.tags[0]}]() [#{frontmatter.tags[1]}]()
+
+So you have been dutiful engineer, maintaining your organization's critical data pipeline
+and you have run into a spark job that takes hours to complete.
+At first you just let it run and do other things. But at some point it becomes a huge bottleneck
+that drains tons of developer and processing time. And when it breaks you get hit by a sudden dread
+from the realization that it needs all that time was wasted and it needs to
+rerun again.
+
+Well you have come to the right place my friend! This blog post will go over a tried and true method
+I have used to bring spark jobs that used to take hours down to several minutes, and you can do it too.
+
+### The TLDR:
+
+1.  **Write Better SQL.** Start by looking at what actions each data sets are doing and how to design a better plan. This will be where 70% of the gains can be found
+2.  **Add caching and indexes.** If you find that your process has a long series of intermediate steps, caching and indexing can provide another huge performance boost.
+3.  **Optimize your spark settings.** Use trial and error to play with cpu cores, executor memory, and partition size to see what works.
+
+I should start by mentioning that this post is assuming you are able to leverage the full capabilities of SparkSQL and its new codegen features.
+Also these techniques have been implemented mainly on pipelines that process around 200 - 600 GB of data per process so if that is you keep reading.
+
+## Write Better SQL
+
+Working with SparkSQL can be a double edged sword. The SQL interface works so well that many engineers forget that they are still operating in a distributed environment and suffering from all the trade offs that come with it.
+This means that your first step must be to understand what are the critical columns in the final dataset
+and work towards producing them as efficiently as possible.
+
+#### Remove Waste
+
+You would be surprised how many redundant rows and duplicate tables are found in legacy pipelines.
+This is an easy win and a great place to start. A well designed pipeline has one
+flow and each column is adding a meaningful new dimension to the data. Cleaning
+this will not only make your pipeline faster but also much easier to debug in the future.
+
+#### Do Large Jobs First
+
+If you are retrieving data from a massive table or dealing with very large sorted data sets.
+Do this work up front, and make sure it can be reused as much as possible rather than resorting at every step.
+
+#### Parallelize Your Dependency Chains
+
+Sparks greatest advantage is it can run jobs in a massively parallel way. So make sure your dependency chains take advantage of this.
+If your pipeline has multiple stages modify each stage so that it can run independently from each other.
+
+#### Save What You Need
+
+It’s important to consider what you need to save to disk. Many times teams will save every intermediate dataset as file
+on disk for easy audibility. While this is the easiest solution the space and time trade off of doing so can get quite expensive
+for large pipelines. One technique I have found to be effective is to save only one final dataset with “audit” columns.
+These columns keep track of at what exact point each row changed in the pipeline. This method has
+proven to be an effective way to audit while significantly cutting down the size of intermediate files.
+
+## Add Caching and Indexes
+
+Once you have a structurally sound and optimized pipeline. The next thing to consider is caching and indexing.
+
+#### Caching
+
+Caching in the context of spark is specifically referring to saving intermediate Data sets that are frequently used. I have found that the best strategy for picking which datasets to cache is by looking at the SparkSQL tab in Spark UI
+to check the times and frequency for each dataset. If a dataset takes longer than 1 minute to generate and is used more than twice it can be a good candidate for caching.
+
+#### Indexing
+
+Indexing is the more permanent form of caching. An index can be especially useful for a small set of look up values that 
+will be used throughout the full lifecycle of the pipe line. In this case it is worth considering persisting the lookup table to disk and calling that table directly in the pipeline.
+This can will be able to take advantage of join optimization that will be discussed in the next section.
+
+## Optimize Your Spark Settings
+
+After you have carefully thought about the structure of your data, you can now enter the world of spark job tuning.
+There are many long discussions and threads about this topic so I will not delve into the details here. Rather I will summarize the most effective methods to start with.
+
+#### Adjust CPU Cores
+
+Now that your data structured optimally; adjusting CPU cores should now make a significant difference.
+Find the right balance between speed and size. You don’t want to take over the entire spark cluster for one job.
+Usually performance will begin to plateau at some point so experiment until you find the sweet spot.
+
+#### Adjust Executor Memory
+
+This follows the same logic as cores. The quick and easy way to find the right executor memory is to check the Spark UI and see how much memory the job is using.
+Make sure your jobs are running in RAM as possible ideally 100% of the time.
+
+#### Optimize Joins
+
+Spark has many hints that can be used to nudge the query optimizer a certain direction. The two most important types of join are shuffle merge join and broadcast join.
+
+A shuffle merge join is the default join for large spark data sets.
+
+A broadcast join is a unique join that is designed to take a small dataset and broadcast it the full dataset to every executor to avoid the shuffle step. This can be a very effective way to save time especially if you have leveraged your indexes properly from the previous section. One must be careful not to over load the spark executor memory when performing this king of join.
+
+#### Tune File Partions
+
+When saving a data set to memory. Adjusting your partition parameters can also be a great source of improved performance of the data set being read and processed in the future. Your best tools to start with are partition size, coalesce, and bucketing partition by.
+
+Partition size, and coalesce are used to manage the size of each partition. It's important to make sure your data is not being put into too small or too large chunks. Spark does this by default but it helps to set this if your data is misbehaving.
+
+Bucketing and Partition By is a very useful technique if you find your data constantly being processed with the same primary key. If you have an id field that you are doing most of your joins on, saving your data by sorting and partitioning on the same primary id can save you from running expensive shuffle steps in the future which can be a huge performance boost.
+
+
+## The End
+Congratulations! If you have gone through these steps you should now have a stable, fast and well running spark pipeline. 
